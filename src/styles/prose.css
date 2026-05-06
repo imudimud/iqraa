@@ -1,0 +1,199 @@
+/* ════════════════════════════════════════════════════════════════
+   ARTICLE PROSE — classical typography for body content
+   Scoped under .article-prose so it never bleeds into UI chrome.
+   ════════════════════════════════════════════════════════════════ */
+
+.article-prose {
+  font-family: var(--font-body);
+  font-size: clamp(1.075rem, 1rem + 0.4vw, 1.225rem);
+  line-height: 1.78;
+  color: var(--color-text);
+  max-width: var(--content-width);
+}
+@media (max-width: 600px) {
+  .article-prose { line-height: 1.8; }
+}
+
+.article-prose > * { max-width: 70ch; }
+.article-prose > .quran-block,
+.article-prose > .nafs-triad,
+.article-prose > .pull-quote,
+.article-prose > .hadith-block,
+.article-prose > .callout,
+.article-prose > .section-divider { max-width: none; }
+
+/* Paragraphs */
+.article-prose p {
+  margin: 0 0 1.4em;
+  text-wrap: pretty;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+.article-prose p:last-child { margin-bottom: 0; }
+
+/* Drop cap on the first paragraph after each chapter heading */
+.article-prose .article-h2 + p::first-letter,
+.article-prose > p:first-of-type::first-letter,
+.article-prose .lead::first-letter {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 4.4em;
+  line-height: 0.9;
+  float: left;
+  margin: 0.06em 0.12em -0.05em 0;
+  color: var(--color-gold);
+  text-shadow: 0 0 24px rgba(201, 162, 93, 0.3);
+  padding-right: 0.06em;
+}
+
+/* Reset drop cap on paragraphs that aren't visually first */
+.article-prose .article-h3 + p::first-letter {
+  all: unset;
+}
+
+/* ── Chapter heading (h2) ─────────────────────────────────────── */
+
+.article-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+  color: var(--color-text-strong);
+  margin: var(--space-24) 0 var(--space-10);
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+  text-align: center;
+  text-wrap: balance;
+  position: relative;
+}
+.article-h2 .roman {
+  display: block;
+  font-family: var(--font-roman);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 0.9;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.55rem;
+  position: relative;
+  font-style: normal;
+}
+.article-h2 .roman::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 0.55rem auto 0;
+  opacity: 0.6;
+}
+.article-h2 em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-gold-light);
+}
+
+/* ── Sub-section heading (h3) ─────────────────────────────────── */
+
+.article-h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  line-height: 1.25;
+  color: var(--color-paper-warm);
+  margin: var(--space-12) 0 var(--space-5);
+  letter-spacing: -0.003em;
+  scroll-margin-top: calc(var(--header-height) + var(--space-6));
+}
+.article-h3::before {
+  content: "✦";
+  display: inline-block;
+  margin-right: 0.65rem;
+  color: var(--color-gold);
+  font-size: 0.7em;
+  vertical-align: 0.18em;
+  font-style: normal;
+}
+.article-h3 em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-gold-light);
+  font-weight: 500;
+}
+
+/* ── Inline elements ──────────────────────────────────────────── */
+
+.article-prose strong {
+  font-weight: 600;
+  color: var(--color-gold-light);
+}
+.article-prose em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-paper-warm);
+}
+.article-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-gold-light);
+}
+.article-prose a {
+  color: var(--color-gold-light);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-gold-soft);
+  transition: color var(--transition-interactive), border-color var(--transition-interactive);
+}
+.article-prose a:hover {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
+}
+
+/* ── Lists ────────────────────────────────────────────────────── */
+
+.article-prose ul,
+.article-prose ol {
+  margin: 0 0 1.4em;
+  padding-left: 1.5em;
+}
+.article-prose ul { list-style: none; }
+.article-prose ul > li {
+  position: relative;
+  padding-left: 0.5em;
+  margin-bottom: 0.5em;
+}
+.article-prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: -1.1em;
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  opacity: 0.85;
+}
+.article-prose ol { list-style: decimal; color: var(--color-gold); }
+.article-prose ol > li {
+  margin-bottom: 0.5em;
+  color: var(--color-text);
+}
+
+/* ── Blockquote (non-Quran) ───────────────────────────────────── */
+
+.article-prose blockquote {
+  margin: var(--space-8) 0;
+  padding: 0 0 0 var(--space-5);
+  border-left: 2px solid var(--color-gold-soft);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}

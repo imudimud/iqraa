@@ -1,0 +1,145 @@
+/* ════════════════════════════════════════════════════════════════
+   QURAN BLOCK · sacred panel, parchment-on-night
+   Four gold corner brackets, radial parchment glow inside dark.
+   No animation, no hover transform on the Arabic text.
+   ════════════════════════════════════════════════════════════════ */
+
+.quran-block {
+  position: relative;
+  margin: var(--space-12) auto;
+  max-width: 44rem;
+  padding: clamp(1.75rem, 4vw, 3.2rem) clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--color-quran-border);
+  background:
+    radial-gradient(ellipse at center, rgba(201, 162, 93, 0.06), transparent 70%),
+    linear-gradient(180deg, rgba(20, 24, 42, 0.6), rgba(14, 18, 34, 0.4));
+  text-align: center;
+}
+
+[data-theme="light"] .quran-block {
+  background:
+    radial-gradient(ellipse at top right, rgba(138, 109, 53, 0.10), transparent 32%),
+    linear-gradient(180deg, var(--color-quran-bg), var(--color-surface));
+  box-shadow: var(--shadow-md);
+}
+
+/* Four gold corner brackets — L-shapes at each corner.
+   Two from the figure's ::before/::after, two from the inner span. */
+.quran-block::before,
+.quran-block::after,
+.quran-block .quran-corners::before,
+.quran-block .quran-corners::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--color-gold);
+  pointer-events: none;
+}
+.quran-block::before {
+  top: -1px; left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.quran-block::after {
+  bottom: -1px; right: -1px;
+  border-left: none;
+  border-top: none;
+}
+.quran-block .quran-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.quran-block .quran-corners::before {
+  top: -1px; right: -1px;
+  border-left: none;
+  border-bottom: none;
+}
+.quran-block .quran-corners::after {
+  bottom: -1px; left: -1px;
+  border-right: none;
+  border-top: none;
+}
+
+.quran-block__label {
+  display: inline-block;
+  font-family: var(--font-arabic-quran);
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  color: var(--color-gold-deep);
+  margin-bottom: var(--space-5);
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--color-quran-border);
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.18);
+  direction: rtl;
+}
+[data-theme="light"] .quran-block__label {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--color-gold-deep);
+}
+
+.quran-block blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-style: normal;
+}
+
+.quran-arabic {
+  font-family: var(--font-arabic-quran);
+  direction: rtl;
+  text-align: center;
+  font-size: clamp(1.95rem, 1.4rem + 1.6vw, 2.85rem);
+  line-height: 2;
+  font-weight: 400;
+  color: var(--color-paper-warm);
+  margin: 0 0 var(--space-7);
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  text-shadow: 0 0 24px rgba(201, 162, 93, 0.10);
+}
+[data-theme="light"] .quran-arabic { color: var(--color-text); text-shadow: none; }
+
+.quran-translation {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.125rem, 1rem + 0.4vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0 auto var(--space-6);
+  max-width: 56ch;
+  text-wrap: balance;
+}
+
+.quran-cite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  font-family: var(--font-roman);
+  font-size: clamp(0.74rem, 0.7rem + 0.15vw, 0.85rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+.quran-cite::before,
+.quran-cite::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--color-gold-deep);
+}
+
+@media (max-width: 600px) {
+  .quran-arabic {
+    font-size: 2rem;
+    line-height: 1.95;
+    margin-bottom: var(--space-6);
+  }
+  .quran-translation { font-size: 1.1rem; line-height: 1.65; }
+  .quran-block { padding: 1.75rem 1.25rem; }
+  .quran-cite { letter-spacing: 0.22em; font-size: 0.72rem; }
+  .quran-cite::before, .quran-cite::after { width: 18px; }
+}
