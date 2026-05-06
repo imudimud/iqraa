@@ -8,6 +8,7 @@ export interface Reference {
 }
 
 export function Footnotes({ refs, lang }: { refs: Reference[]; lang: Lang }) {
+  if (!refs || refs.length === 0) return null;
   const t = getStrings(lang);
   return (
     <section className="references" id="references" aria-labelledby="references-title">

@@ -12,17 +12,24 @@ import { MobileTOCDrawer } from "@/components/article/MobileTOCDrawer";
 import { ReadingProgress } from "@/components/article/ReadingProgress";
 import { ShareBar } from "@/components/article/ShareBar";
 import { ArticleSidebar } from "@/components/article/ArticleSidebar";
-import { Footnotes } from "@/components/article/Footnotes";
+import { Footnotes, type Reference } from "@/components/article/Footnotes";
 import { Colophon } from "@/components/article/Colophon";
-import { articleHeadingsFr, articleHeadingsV2Fr, type Heading } from "@/lib/toc";
+import {
+  articleHeadingsFr,
+  articleHeadingsV2Fr,
+  articleHeadingsMondePasVide,
+  type Heading,
+} from "@/lib/toc";
 import { buildArticleMetadata, buildArticleJsonLd } from "@/lib/seo";
 import { getStrings } from "@/lib/i18n";
 import type { ArticleFrontmatter } from "@/lib/article";
 import { meta as quranAiDualityMeta } from "@/content/articles/quran-ai-duality.meta";
 import { meta as quranAiDualityV2Meta } from "@/content/articles/quran-ai-duality-v2.meta";
+import { meta as mondePasVideMeta } from "@/content/articles/monde-pas-vide.meta";
 import { references as quranAiDualityRefs } from "@/content/references/quran-ai-duality";
 import QuranAiDualityContent from "@/content/articles/quran-ai-duality.mdx";
 import QuranAiDualityV2Content from "@/content/articles/quran-ai-duality-v2.mdx";
+import MondePasVideContent from "@/content/articles/monde-pas-vide.mdx";
 
 const LANG = "fr" as const;
 const SITE_URL =
@@ -31,7 +38,8 @@ const SITE_URL =
 interface ArticleEntry {
   meta: ArticleFrontmatter;
   Component: React.ComponentType;
-  references: typeof quranAiDualityRefs;
+  /** Omitted for meditative pieces that cite only Quran (no external refs). */
+  references?: Reference[];
   filePath: string;
   headings: Heading[];
 }
@@ -50,6 +58,12 @@ const articles: Record<string, ArticleEntry> = {
     references: quranAiDualityRefs,
     filePath: "src/content/articles/quran-ai-duality-v2.mdx",
     headings: articleHeadingsV2Fr,
+  },
+  "monde-pas-vide": {
+    meta: mondePasVideMeta,
+    Component: MondePasVideContent,
+    filePath: "src/content/articles/monde-pas-vide.mdx",
+    headings: articleHeadingsMondePasVide,
   },
 };
 
@@ -129,7 +143,7 @@ export default async function ArticlePage({
                 description={meta.description}
                 lang={LANG}
               />
-              <Footnotes refs={references} lang={LANG} />
+              <Footnotes refs={references ?? []} lang={LANG} />
             </div>
 
             <aside className="sidebar-col" aria-label={t.sidebarMetaAria}>

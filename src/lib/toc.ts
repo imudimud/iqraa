@@ -66,6 +66,32 @@ export function articleHeadings(lang: Lang): Heading[] {
 }
 
 /**
+ * Heading map for « Le monde n'est pas vide » — meditation on light, shadow,
+ * heart, basîrah, nafs, rûh, expanding cosmos. Eighteen chapters + conclusion.
+ */
+export const articleHeadingsMondePasVide: Heading[] = [
+  { id: "monde-parle", text: "I. Le monde parle, mais nous ne comprenons pas sa parole", level: 2 },
+  { id: "lumiere", text: "II. La lumière : la racine de toute vision", level: 2 },
+  { id: "ombre", text: "III. L'ombre : la dépendance rendue visible", level: 2 },
+  { id: "basirah", text: "IV. La basîrah : la vision intérieure", level: 2 },
+  { id: "coeur", text: "V. Le cœur : le véritable centre de perception", level: 2 },
+  { id: "interpose", text: "VI. Allah s'interpose entre l'homme et son cœur", level: 2 },
+  { id: "ruh", text: "VII. Le rûh : le mystère qui humilie la connaissance humaine", level: 2 },
+  { id: "nafs-meditation", text: "VIII. Le nafs : la force intérieure qui déforme le réel", level: 2 },
+  { id: "esprit", text: "IX. L'esprit est une machine, mais il n'est pas le maître", level: 2 },
+  { id: "fath", text: "X. Fath : l'ouverture du réel", level: 2 },
+  { id: "univers-expansion", text: "XI. L'univers en expansion : le ciel n'est pas immobile", level: 2 },
+  { id: "expansion-contraction", text: "XII. Expansion extérieure, contraction intérieure", level: 2 },
+  { id: "science-coran", text: "XIII. Science et Coran : mécanisme et signification", level: 2 },
+  { id: "connaissance-fitnah", text: "XIV. La connaissance sans lumière devient fitnah", level: 2 },
+  { id: "nur-sur-nur", text: "XV. Nûr sur nûr : fitrah et révélation", level: 2 },
+  { id: "deux-fermetures", text: "XVI. L'être humain entre deux fermetures", level: 2 },
+  { id: "monde-plein", text: "XVII. Le monde est plein, mais l'être humain le vide", level: 2 },
+  { id: "lecture-finale", text: "XVIII. La lecture finale", level: 2 },
+  { id: "conclusion", text: "Conclusion · Seul un cœur ouvert peut voir", level: 2 },
+];
+
+/**
  * Extended French edition (v2). Adds four new chapters to the original twelve:
  *  IX. Responsabilité à l'ère algorithmique
  *  XI. Justice et biais algorithmiques

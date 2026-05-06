@@ -1306,6 +1306,24 @@ sup.fn a:hover { color: var(--color-gold-light); }
 .references__backlink:hover { color: var(--color-gold-light); }
 
 /* ════════════════════════════════════════════════════════════════
+   BISMILLAH ORNAMENT · ﷽ at the top of contemplative essays
+   ════════════════════════════════════════════════════════════════ */
+
+.bismillah {
+  display: block;
+  text-align: center;
+  font-family: var(--font-arabic-quran);
+  font-size: clamp(2.4rem, 1.8rem + 1.6vw, 3.2rem);
+  color: var(--color-gold);
+  line-height: 1;
+  margin: 0 auto var(--space-10);
+  direction: rtl;
+  text-shadow: 0 0 22px rgba(201, 162, 93, 0.22);
+  letter-spacing: 0;
+  user-select: none;
+}
+
+/* ════════════════════════════════════════════════════════════════
    COLOPHON · « والله أعلم »
    ════════════════════════════════════════════════════════════════ */
 
