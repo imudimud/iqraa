@@ -113,13 +113,13 @@ export default async function ArticlePageEn({
               />
               <Component />
               <Colophon lang={LANG} />
-              <Footnotes refs={references} lang={LANG} />
               <ShareBar
                 url={articleUrl}
                 title={meta.title}
                 description={meta.description}
                 lang={LANG}
               />
+              <Footnotes refs={references} lang={LANG} />
             </div>
 
             <aside className="sidebar-col" aria-label={t.sidebarMetaAria}>
