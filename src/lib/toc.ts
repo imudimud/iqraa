@@ -64,3 +64,40 @@ export const articleHeadingsEn: Heading[] = [
 export function articleHeadings(lang: Lang): Heading[] {
   return lang === "en" ? articleHeadingsEn : articleHeadingsFr;
 }
+
+/**
+ * Extended French edition (v2). Adds four new chapters to the original twelve:
+ *  IX. Responsabilité à l'ère algorithmique
+ *  XI. Justice et biais algorithmiques
+ *  XII. L'illusion de la connaissance
+ *  XV. L'IA comme épreuve · fitna
+ */
+export const articleHeadingsV2Fr: Heading[] = [
+  { id: "avant-propos", text: "Avant-propos · Une convergence inattendue", level: 2 },
+  { id: "iqra", text: "I. Iqra : le premier mot", level: 2 },
+  { id: "vitesse", text: "II. La vitesse de la connaissance", level: 2 },
+  { id: "univers-parlait", text: "III. L'univers parlait depuis toujours", level: 2 },
+  { id: "horizons", text: "IV. Les signes dans les horizons et dans les âmes", level: 2 },
+  { id: "litaarafu", text: "V. Lita'arafu : la diversité comme commandement divin", level: 2 },
+  { id: "nafs", text: "VI. La dualité du Nafs", level: 2 },
+  {
+    id: "miroir-prophetes",
+    text: "VII. Le miroir des prophètes",
+    level: 2,
+    children: [
+      { id: "sulayman", text: "Sulaymân : la maîtrise par la gratitude", level: 3 },
+      { id: "qarun", text: "Qârûn : l'invention du mérite", level: 3 },
+      { id: "harut-marut", text: "Hârût et Mârût : l'avertissement ignoré", level: 3 },
+    ],
+  },
+  { id: "gouvernance", text: "VIII. L'accélération sans sagesse", level: 2 },
+  { id: "responsabilite", text: "IX. La responsabilité à l'ère algorithmique", level: 2 },
+  { id: "desinformation", text: "X. La désinformation", level: 2 },
+  { id: "justice-biais", text: "XI. La justice et les biais algorithmiques", level: 2 },
+  { id: "illusion-connaissance", text: "XII. L'illusion de la connaissance", level: 2 },
+  { id: "khabir-shahid", text: "XIII. Al-Khabîr, Al-Shâhid", level: 2 },
+  { id: "aveuglement", text: "XIV. L'aveuglement des yeux et des cœurs", level: 2 },
+  { id: "fitna", text: "XV. L'IA comme épreuve · fitna", level: 2 },
+  { id: "conclusion", text: "XVI. Conclusion : l'épreuve de notre époque", level: 2 },
+  { id: "references", text: "Références", level: 2 },
+];

@@ -28,6 +28,8 @@ export const ArticleFrontmatterSchema = z.object({
       reference: z.string(),
     })
     .optional(),
+  /** Article-specific edition label override (e.g. "Lecture II"). */
+  edition: z.string().optional(),
   ogImage: z.string().optional(),
 });
 

@@ -44,7 +44,7 @@ const arabic = Amiri({
 });
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa.example.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa-zeta.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

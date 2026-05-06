@@ -1,12 +1,17 @@
 import type { MetadataRoute } from "next";
 import { meta as quranAiDualityMeta } from "@/content/articles/quran-ai-duality.meta";
 import { meta as quranAiDualityMetaEn } from "@/content/articles/quran-ai-duality.en.meta";
+import { meta as quranAiDualityV2Meta } from "@/content/articles/quran-ai-duality-v2.meta";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa.example.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa-zeta.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const articles = [quranAiDualityMeta, quranAiDualityMetaEn];
+  const articles = [
+    quranAiDualityMeta,
+    quranAiDualityMetaEn,
+    quranAiDualityV2Meta,
+  ];
   return [
     {
       url: SITE_URL,

@@ -3,7 +3,7 @@ import type { ArticleFrontmatter } from "./article";
 import type { Lang } from "./i18n";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa.example.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa-zeta.vercel.app";
 const SITE_NAME = "Iqraa";
 
 /**

@@ -13,13 +13,14 @@ interface CoverProps {
  */
 export function Cover({ fm, lang }: CoverProps) {
   const t = getStrings(lang);
+  const edition = fm.edition ?? t.coverEdition;
   return (
     <header className="cover" aria-label="Cover">
       <div className="cover__top">
         <div className="cover__imprint">
           <span className="cover__imprint-mark" aria-hidden="true" />
           <span>
-            Iqraa &nbsp;·&nbsp; {t.coverEdition}
+            Iqraa &nbsp;·&nbsp; {edition}
           </span>
         </div>
         <span className="cover__date" aria-hidden="true">

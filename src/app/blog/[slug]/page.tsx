@@ -14,23 +14,26 @@ import { ShareBar } from "@/components/article/ShareBar";
 import { ArticleSidebar } from "@/components/article/ArticleSidebar";
 import { Footnotes } from "@/components/article/Footnotes";
 import { Colophon } from "@/components/article/Colophon";
-import { articleHeadings } from "@/lib/toc";
+import { articleHeadingsFr, articleHeadingsV2Fr, type Heading } from "@/lib/toc";
 import { buildArticleMetadata, buildArticleJsonLd } from "@/lib/seo";
 import { getStrings } from "@/lib/i18n";
 import type { ArticleFrontmatter } from "@/lib/article";
 import { meta as quranAiDualityMeta } from "@/content/articles/quran-ai-duality.meta";
+import { meta as quranAiDualityV2Meta } from "@/content/articles/quran-ai-duality-v2.meta";
 import { references as quranAiDualityRefs } from "@/content/references/quran-ai-duality";
 import QuranAiDualityContent from "@/content/articles/quran-ai-duality.mdx";
+import QuranAiDualityV2Content from "@/content/articles/quran-ai-duality-v2.mdx";
 
 const LANG = "fr" as const;
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa.example.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa-zeta.vercel.app";
 
 interface ArticleEntry {
   meta: ArticleFrontmatter;
   Component: React.ComponentType;
   references: typeof quranAiDualityRefs;
   filePath: string;
+  headings: Heading[];
 }
 
 const articles: Record<string, ArticleEntry> = {
@@ -39,6 +42,14 @@ const articles: Record<string, ArticleEntry> = {
     Component: QuranAiDualityContent,
     references: quranAiDualityRefs,
     filePath: "src/content/articles/quran-ai-duality.mdx",
+    headings: articleHeadingsFr,
+  },
+  "quran-ai-duality-v2": {
+    meta: quranAiDualityV2Meta,
+    Component: QuranAiDualityV2Content,
+    references: quranAiDualityRefs,
+    filePath: "src/content/articles/quran-ai-duality-v2.mdx",
+    headings: articleHeadingsV2Fr,
   },
 };
 
@@ -79,11 +90,10 @@ export default async function ArticlePage({
   const entry = articles[slug];
   if (!entry) notFound();
 
-  const { Component, meta, references } = entry;
+  const { Component, meta, references, headings } = entry;
   const stats = await getReadingStats(entry.filePath);
   const jsonLd = buildArticleJsonLd(meta, stats.minutes, LANG);
   const articleUrl = `${SITE_URL}/blog/${slug}`;
-  const headings = articleHeadings(LANG);
   const t = getStrings(LANG);
 
   return (
@@ -112,7 +122,7 @@ export default async function ArticlePage({
                 lang={LANG}
               />
               <Component />
-              <Colophon lang={LANG} />
+              <Colophon lang={LANG} edition={meta.edition} />
               <ShareBar
                 url={articleUrl}
                 title={meta.title}

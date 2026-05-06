@@ -24,7 +24,7 @@ import QuranAiDualityContentEn from "@/content/articles/quran-ai-duality.en.mdx"
 
 const LANG = "en" as const;
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa.example.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://iqraa-zeta.vercel.app";
 
 interface ArticleEntry {
   meta: ArticleFrontmatter;
