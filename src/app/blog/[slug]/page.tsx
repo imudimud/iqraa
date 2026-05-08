@@ -18,6 +18,7 @@ import {
   articleHeadingsFr,
   articleHeadingsV2Fr,
   articleHeadingsMondePasVide,
+  articleHeadingsUniversParleLumiere,
   type Heading,
 } from "@/lib/toc";
 import { buildArticleMetadata, buildArticleJsonLd } from "@/lib/seo";
@@ -26,10 +27,13 @@ import type { ArticleFrontmatter } from "@/lib/article";
 import { meta as quranAiDualityMeta } from "@/content/articles/quran-ai-duality.meta";
 import { meta as quranAiDualityV2Meta } from "@/content/articles/quran-ai-duality-v2.meta";
 import { meta as mondePasVideMeta } from "@/content/articles/monde-pas-vide.meta";
+import { meta as universParleLumiereMeta } from "@/content/articles/univers-parle-lumiere.meta";
 import { references as quranAiDualityRefs } from "@/content/references/quran-ai-duality";
+import { references as universParleLumiereRefs } from "@/content/references/univers-parle-lumiere";
 import QuranAiDualityContent from "@/content/articles/quran-ai-duality.mdx";
 import QuranAiDualityV2Content from "@/content/articles/quran-ai-duality-v2.mdx";
 import MondePasVideContent from "@/content/articles/monde-pas-vide.mdx";
+import UniversParleLumiereContent from "@/content/articles/univers-parle-lumiere.mdx";
 
 const LANG = "fr" as const;
 const SITE_URL =
@@ -38,7 +42,6 @@ const SITE_URL =
 interface ArticleEntry {
   meta: ArticleFrontmatter;
   Component: React.ComponentType;
-  /** Omitted for meditative pieces that cite only Quran (no external refs). */
   references?: Reference[];
   filePath: string;
   headings: Heading[];
@@ -64,6 +67,13 @@ const articles: Record<string, ArticleEntry> = {
     Component: MondePasVideContent,
     filePath: "src/content/articles/monde-pas-vide.mdx",
     headings: articleHeadingsMondePasVide,
+  },
+  "univers-parle-lumiere": {
+    meta: universParleLumiereMeta,
+    Component: UniversParleLumiereContent,
+    references: universParleLumiereRefs,
+    filePath: "src/content/articles/univers-parle-lumiere.mdx",
+    headings: articleHeadingsUniversParleLumiere,
   },
 };
 

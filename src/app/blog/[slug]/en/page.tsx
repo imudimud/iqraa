@@ -12,15 +12,21 @@ import { MobileTOCDrawer } from "@/components/article/MobileTOCDrawer";
 import { ReadingProgress } from "@/components/article/ReadingProgress";
 import { ShareBar } from "@/components/article/ShareBar";
 import { ArticleSidebar } from "@/components/article/ArticleSidebar";
-import { Footnotes } from "@/components/article/Footnotes";
+import { Footnotes, type Reference } from "@/components/article/Footnotes";
 import { Colophon } from "@/components/article/Colophon";
-import { articleHeadings } from "@/lib/toc";
+import {
+  articleHeadingsEn,
+  articleHeadingsMondePasVideEn,
+  type Heading,
+} from "@/lib/toc";
 import { buildArticleMetadata, buildArticleJsonLd } from "@/lib/seo";
 import { getStrings } from "@/lib/i18n";
 import type { ArticleFrontmatter } from "@/lib/article";
 import { meta as quranAiDualityMetaEn } from "@/content/articles/quran-ai-duality.en.meta";
+import { meta as mondePasVideMetaEn } from "@/content/articles/monde-pas-vide.en.meta";
 import { references as quranAiDualityRefs } from "@/content/references/quran-ai-duality";
 import QuranAiDualityContentEn from "@/content/articles/quran-ai-duality.en.mdx";
+import MondePasVideContentEn from "@/content/articles/monde-pas-vide.en.mdx";
 
 const LANG = "en" as const;
 const SITE_URL =
@@ -29,8 +35,9 @@ const SITE_URL =
 interface ArticleEntry {
   meta: ArticleFrontmatter;
   Component: React.ComponentType;
-  references: typeof quranAiDualityRefs;
+  references?: Reference[];
   filePath: string;
+  headings: Heading[];
 }
 
 const articles: Record<string, ArticleEntry> = {
@@ -39,6 +46,13 @@ const articles: Record<string, ArticleEntry> = {
     Component: QuranAiDualityContentEn,
     references: quranAiDualityRefs,
     filePath: "src/content/articles/quran-ai-duality.en.mdx",
+    headings: articleHeadingsEn,
+  },
+  "monde-pas-vide": {
+    meta: mondePasVideMetaEn,
+    Component: MondePasVideContentEn,
+    filePath: "src/content/articles/monde-pas-vide.en.mdx",
+    headings: articleHeadingsMondePasVideEn,
   },
 };
 
@@ -79,11 +93,10 @@ export default async function ArticlePageEn({
   const entry = articles[slug];
   if (!entry) notFound();
 
-  const { Component, meta, references } = entry;
+  const { Component, meta, references, headings } = entry;
   const stats = await getReadingStats(entry.filePath);
   const jsonLd = buildArticleJsonLd(meta, stats.minutes, LANG);
   const articleUrl = `${SITE_URL}/blog/${slug}/en`;
-  const headings = articleHeadings(LANG);
   const t = getStrings(LANG);
 
   return (
@@ -112,14 +125,14 @@ export default async function ArticlePageEn({
                 lang={LANG}
               />
               <Component />
-              <Colophon lang={LANG} />
+              <Colophon lang={LANG} edition={meta.edition} />
               <ShareBar
                 url={articleUrl}
                 title={meta.title}
                 description={meta.description}
                 lang={LANG}
               />
-              <Footnotes refs={references} lang={LANG} />
+              <Footnotes refs={references ?? []} lang={LANG} />
             </div>
 
             <aside className="sidebar-col" aria-label={t.sidebarMetaAria}>

@@ -1,13 +1,16 @@
 import { ImageResponse } from "next/og";
 import { meta as quranAiDualityMetaEn } from "@/content/articles/quran-ai-duality.en.meta";
+import { meta as mondePasVideMetaEn } from "@/content/articles/monde-pas-vide.en.meta";
+import type { ArticleFrontmatter } from "@/lib/article";
 
-export const alt = "The Universe Speaks — Iqraa";
+export const alt = "Iqraa";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const articles = {
+const articles: Record<string, ArticleFrontmatter> = {
   "quran-ai-duality": quranAiDualityMetaEn,
-} as const;
+  "monde-pas-vide": mondePasVideMetaEn,
+};
 
 export default async function Image({
   params,
@@ -15,7 +18,7 @@ export default async function Image({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const meta = articles[slug as keyof typeof articles];
+  const meta = articles[slug];
   if (!meta) {
     return new ImageResponse(
       (
@@ -31,6 +34,8 @@ export default async function Image({
       { ...size }
     );
   }
+
+  const edition = meta.edition ?? "Reading I";
 
   return new ImageResponse(
     (
@@ -71,7 +76,7 @@ export default async function Image({
                 position: "relative",
               }}
             />
-            <div style={{ display: "flex" }}>Iqraa &middot; Reading I</div>
+            <div style={{ display: "flex" }}>Iqraa &middot; {edition}</div>
           </div>
           <div style={{ display: "flex", color: "#c9a25d", letterSpacing: "10px" }}>
             MMXXVI
@@ -121,16 +126,18 @@ export default async function Image({
           <div
             style={{
               display: "flex",
-              fontSize: "78px",
+              fontSize: "72px",
               lineHeight: 1.05,
               color: "#f3eada",
               fontStyle: "italic",
               fontWeight: 500,
               marginBottom: "12px",
+              textAlign: "center",
+              maxWidth: "1000px",
             }}
           >
-            <span>The Universe&nbsp;</span>
-            <span style={{ color: "#e6c889" }}>Speaks</span>
+            <span>{meta.titleAccent.before}&nbsp;</span>
+            <span style={{ color: "#e6c889" }}>{meta.titleAccent.emphasis}</span>
           </div>
           <div
             style={{

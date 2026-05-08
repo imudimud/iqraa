@@ -92,6 +92,63 @@ export const articleHeadingsMondePasVide: Heading[] = [
 ];
 
 /**
+ * Heading map for « L'Univers Parle — Édition Lumière » — fourth reading.
+ * Adds Mûsâ-Al-Khidr (humility), Nûr 'alâ Nûr (light), Solitude (AI-era), and
+ * Convergence (the verse↔finding table) to the existing thread.
+ */
+export const articleHeadingsUniversParleLumiere: Heading[] = [
+  { id: "avant-propos", text: "Avant-propos · La pauvreté du regard", level: 2 },
+  { id: "iqra", text: "I. Iqra · le programme du premier mot", level: 2 },
+  { id: "vitesse", text: "II. D'Ibn Battuta aux serveurs · la vitesse et ce qu'elle cache", level: 2 },
+  { id: "univers-parlait", text: "III. L'univers parlait depuis toujours", level: 2 },
+  { id: "horizons", text: "IV. Les signes dans les horizons et dans les âmes", level: 2 },
+  { id: "litaarafu", text: "V. Lita'arafu · la diversité comme commandement", level: 2 },
+  { id: "musa-khidr", text: "VI. L'humilité comme condition du savoir · Mûsâ et Al-Khidr", level: 2 },
+  { id: "nafs", text: "VII. La dualité du Nafs · le théâtre intérieur", level: 2 },
+  { id: "nur-ala-nur", text: "VIII. La lumière intérieure · Nûr 'alâ Nûr", level: 2 },
+  {
+    id: "miroir-prophetes",
+    text: "IX. Le miroir des prophètes",
+    level: 2,
+    children: [
+      { id: "sulayman", text: "Sulaymân · la maîtrise par la gratitude", level: 3 },
+      { id: "qarun", text: "Qârûn · l'auteur de lui-même", level: 3 },
+      { id: "harut-marut", text: "Hârût et Mârût · l'avertissement inscrit sur l'étiquette", level: 3 },
+    ],
+  },
+  { id: "gouvernance", text: "X. L'accélération sans boussole · la crise de gouvernance", level: 2 },
+  { id: "desinformation", text: "XI. La désinformation · quand le réel devient contestable", level: 2 },
+  { id: "solitude", text: "XII. La solitude au cœur de l'hyperconnexion", level: 2 },
+  { id: "khabir-shahid", text: "XIII. Al-Khabîr, Al-Shâhid · la connaissance divine face aux instruments humains", level: 2 },
+  { id: "convergence", text: "XIV. La convergence · un seul récit", level: 2 },
+  { id: "conclusion", text: "XV. Conclusion · l'épreuve de l'amânah", level: 2 },
+  { id: "references", text: "Références", level: 2 },
+];
+
+/** English heading map for « The World Is Not Empty ». Same slug IDs as FR. */
+export const articleHeadingsMondePasVideEn: Heading[] = [
+  { id: "monde-parle", text: "I. The world speaks, but we do not understand its speech", level: 2 },
+  { id: "lumiere", text: "II. Light · the root of vision", level: 2 },
+  { id: "ombre", text: "III. Shadow · dependence made visible", level: 2 },
+  { id: "basirah", text: "IV. Basīrah · the inner sight", level: 2 },
+  { id: "coeur", text: "V. The heart · the real center of perception", level: 2 },
+  { id: "interpose", text: "VI. Allah comes between a person and his heart", level: 2 },
+  { id: "ruh", text: "VII. Rūḥ · the mystery that humiliates human knowledge", level: 2 },
+  { id: "nafs-meditation", text: "VIII. Nafs · the inner force that distorts reality", level: 2 },
+  { id: "esprit", text: "IX. The mind is a machine, but it is not the master", level: 2 },
+  { id: "fath", text: "X. Fath · the opening of reality", level: 2 },
+  { id: "univers-expansion", text: "XI. The expanding universe · the sky is not still", level: 2 },
+  { id: "expansion-contraction", text: "XII. External expansion, internal contraction", level: 2 },
+  { id: "science-coran", text: "XIII. Science and Qur'an · mechanism and meaning", level: 2 },
+  { id: "connaissance-fitnah", text: "XIV. Knowledge without light becomes fitnah", level: 2 },
+  { id: "nur-sur-nur", text: "XV. Nūr upon nūr · fitrah and revelation", level: 2 },
+  { id: "deux-fermetures", text: "XVI. The human being between two closures", level: 2 },
+  { id: "monde-plein", text: "XVII. The world is full, but the human being empties it", level: 2 },
+  { id: "lecture-finale", text: "XVIII. The final reading", level: 2 },
+  { id: "conclusion", text: "Conclusion · Only an opened heart can see", level: 2 },
+];
+
+/**
  * Extended French edition (v2). Adds four new chapters to the original twelve:
  *  IX. Responsabilité à l'ère algorithmique
  *  XI. Justice et biais algorithmiques
