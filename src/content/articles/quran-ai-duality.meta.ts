@@ -12,6 +12,7 @@ export const meta: ArticleFrontmatter = ArticleFrontmatterSchema.parse({
   publishedAt: "2026-05-06",
   updatedAt: "2026-05-06",
   language: "fr",
+  edition: "Lecture I",
   description:
     "Une méditation longue-forme sur l'intelligence artificielle, la connaissance, les signes de la création et la responsabilité humaine à la lumière du Coran.",
   tags: [

@@ -12,6 +12,7 @@ export const meta: ArticleFrontmatter = ArticleFrontmatterSchema.parse({
   publishedAt: "2026-05-06",
   updatedAt: "2026-05-06",
   language: "en",
+  edition: "Reading I",
   description:
     "A long-form meditation on artificial intelligence, knowledge, the signs of creation, and human responsibility in the light of the Quran.",
   tags: [

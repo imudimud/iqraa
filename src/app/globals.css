@@ -1306,6 +1306,325 @@ sup.fn a:hover { color: var(--color-gold-light); }
 .references__backlink:hover { color: var(--color-gold-light); }
 
 /* ════════════════════════════════════════════════════════════════
+   HOME · landing page (table-of-contents + project intent)
+   ════════════════════════════════════════════════════════════════ */
+
+.home {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem) var(--space-20);
+}
+
+/* — Hero — */
+.home__hero {
+  text-align: center;
+  padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3.5rem);
+  position: relative;
+}
+.home__hero-bismillah {
+  display: block;
+  font-family: var(--font-arabic-quran);
+  font-size: clamp(3rem, 5vw + 2rem, 5.5rem);
+  color: var(--color-gold);
+  line-height: 1;
+  margin: 0 auto var(--space-8);
+  direction: rtl;
+  text-shadow: 0 0 32px rgba(201, 162, 93, 0.30);
+  letter-spacing: 0;
+}
+.home__hero-eyebrow {
+  font-family: var(--font-roman);
+  font-size: 0.78rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--color-gold-deep);
+  margin-bottom: var(--space-6);
+}
+.home__hero-eyebrow::before,
+.home__hero-eyebrow::after {
+  content: "—";
+  margin: 0 0.7rem;
+  color: var(--color-gold-deep);
+  opacity: 0.7;
+}
+.home__hero-brand {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.home__hero-mark {
+  font-family: var(--font-arabic-quran);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--color-gold);
+  direction: rtl;
+  line-height: 1;
+}
+.home__hero-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--color-text-strong);
+  letter-spacing: -0.005em;
+}
+.home__hero-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  max-width: 36ch;
+  margin: 0 auto var(--space-8);
+  text-wrap: balance;
+}
+.home__hero-line {
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 0 auto;
+}
+
+/* — Intro — */
+.home__intro {
+  max-width: 60ch;
+  margin: var(--space-12) auto;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.18rem);
+  line-height: 1.72;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+.home__intro p { margin: 0 0 1.2em; text-wrap: pretty; }
+.home__intro p:last-child { margin-bottom: 0; }
+.home__intro em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-paper-warm);
+}
+
+/* — Section eyebrow + heading — */
+.home__section { margin: var(--space-16) 0; }
+.home__section-head {
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+.home__section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-roman);
+  font-size: 0.74rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-3);
+}
+.home__section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.4rem);
+  line-height: 1.15;
+  color: var(--color-text-strong);
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* — Vocabulary grid — */
+.home__terms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  margin: 0 auto;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.home__term-card {
+  padding: var(--space-7) var(--space-5) var(--space-6);
+  background: var(--color-surface-2);
+  text-align: center;
+  position: relative;
+  transition: background var(--transition-interactive);
+}
+.home__term-card:hover { background: var(--color-surface-3); }
+.home__term-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-soft), transparent);
+}
+.home__term-arabic {
+  font-family: var(--font-arabic-quran);
+  direction: rtl;
+  font-size: clamp(1.7rem, 1.5rem + 0.6vw, 2.1rem);
+  color: var(--color-gold-light);
+  line-height: 1.4;
+  margin-bottom: var(--space-3);
+  letter-spacing: 0;
+}
+.home__term-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-paper-warm);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-2);
+}
+.home__term-gloss {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+/* — Articles grid — */
+.home__articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+.home__article {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-7) var(--space-6);
+  border: 1px solid var(--color-border);
+  background:
+    radial-gradient(80% 60% at 0% 0%, rgba(58, 77, 138, 0.06), transparent 60%),
+    var(--color-surface);
+  border-radius: var(--radius-xl);
+  position: relative;
+  text-decoration: none;
+  color: var(--color-text);
+  transition:
+    transform var(--transition-interactive),
+    border-color var(--transition-interactive),
+    box-shadow var(--transition-interactive);
+}
+.home__article::before, .home__article::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-gold);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-interactive);
+}
+.home__article::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.home__article::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.home__article:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-gold-soft);
+  box-shadow: var(--shadow-md);
+}
+.home__article:hover::before,
+.home__article:hover::after { opacity: 1; }
+
+.home__article-edition {
+  display: inline-block;
+  font-family: var(--font-roman);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-4);
+}
+.home__article-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.45rem, 1.2rem + 0.7vw, 1.85rem);
+  line-height: 1.15;
+  color: var(--color-text-strong);
+  margin: 0 0 var(--space-3);
+  text-wrap: balance;
+}
+.home__article-title em {
+  font-style: italic;
+  color: var(--color-gold-light);
+  font-weight: 400;
+}
+.home__article-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-6);
+  text-wrap: pretty;
+}
+.home__article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-divider);
+  font-family: var(--font-roman);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.home__article-meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-text-faint);
+}
+.home__article-meta-cta {
+  margin-left: auto;
+  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition-interactive), gap var(--transition-interactive);
+}
+.home__article:hover .home__article-meta-cta {
+  color: var(--color-gold-light);
+  gap: 0.7rem;
+}
+
+/* — Closing colophon on the home — */
+.home__closing {
+  margin: var(--space-16) auto 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+.home__closing-mark {
+  display: block;
+  font-family: var(--font-arabic-quran);
+  font-style: normal;
+  font-size: 1.8rem;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+  direction: rtl;
+}
+
+@media (max-width: 600px) {
+  .home__hero { padding: var(--space-10) 0 var(--space-8); }
+  .home__intro { font-size: 1.05rem; line-height: 1.75; }
+  .home__article-meta { font-size: 0.66rem; gap: var(--space-2); }
+  .home__articles { grid-template-columns: 1fr; }
+}
+
+/* ════════════════════════════════════════════════════════════════
    BISMILLAH ORNAMENT · ﷽ at the top of contemplative essays
    ════════════════════════════════════════════════════════════════ */
 
